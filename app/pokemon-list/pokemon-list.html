@@ -1,0 +1,39 @@
+<div class="container">
+
+    <div class="page-header">
+        <h1 class="text-center">Pokedex</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="col-md-9">
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="filter by type" ng-model="vm.search">
+            </div>
+
+            <div class="col-md-4" ng-repeat="pokemon in vm.pokemons | filter:vm.filterByType" ng-click="vm.setPokemon(pokemon)">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="thumbnail">
+                            <img ng-src="http://pokeapi.co/media/img/{{pokemon.national_id}}.png" />
+                        </div>
+                        <div class="text-center" ng-bind="pokemon.name"></div>
+                        <div class="panel-info">
+                            <span ng-repeat="type in pokemon.types">
+                        <span class="label label-success" ng-bind="type.name"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-info btn-block" ng-click="vm.loadMore()">Load More</button>
+        </div>
+
+        <div class="col-md-3">
+            <pokemon-detail pokemon="vm.pokemon" ng-if="vm.pokemon" />
+        </div>
+
+    </div>
+</div>
