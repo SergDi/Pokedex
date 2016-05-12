@@ -1,3 +1,5 @@
+import pokemonDetail from '../pokemon-detail/pokemon-detail';
+
 class PokemonListController {
 
     public pokemons: any[];
@@ -45,6 +47,6 @@ var PokemonListComponent = {
     template: require('./pokemon-list.html')
 };
 
-export default angular.module('pokemon-list', [])
+export default angular.module('pokemon-list', [pokemonDetail])
     .component('pokemonList', PokemonListComponent)
     .name;

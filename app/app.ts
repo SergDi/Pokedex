@@ -2,7 +2,6 @@ import 'angular';
 import 'bootstrap/dist/css/bootstrap.css'
 
 import pokemonList from './pokemon-list/pokemon-list';
-import pokemonDetail from './pokemon-detail/pokemon-detail';
 import spinner from './spinner/spinner'
 
 function App() {
@@ -23,7 +22,7 @@ class AppController {
     }
 }
 angular.module('app',
-    [pokemonList, pokemonDetail, spinner])
+    [pokemonList, spinner])
     .directive('app', App);
 
 angular.bootstrap(document, ['app']);
