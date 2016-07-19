@@ -35,7 +35,7 @@ class PokemonListController {
 
     private load = (response) => {
         this.next = response.data.meta.next;
-        this.pokemons = this.pokemons.concat(response.data.objects);
+        this.pokemons.push(...response.data.objects);
     }
 
 }
