@@ -28,7 +28,7 @@ class PokemonListController {
 
     filterByType = (item) => {
         if (this.search)
-            return item.types.some(f => { return f.name.indexOf(this.search) != -1; });
+            return item.types.some(f => f.name.includes(this.search));
         else
             return true;
     }
