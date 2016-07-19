@@ -1,28 +1,38 @@
 import pokemonDetail from '../pokemon-detail/pokemon-detail';
 
+export interface IPokemon {
+    attack: number;
+    defense: number;
+    hp: number;
+    sp_atk: number;
+    sp_def: number;
+    speed: number;
+    weight: number;
+}
+
 class PokemonListController {
 
-    public pokemons: any[];
+    public pokemons: IPokemon[];
+    public pokemon: IPokemon;
     public next: string;
-    public pokemon;
-    public search;
+    public search: string;
 
     static $inject = ['$http'];
 
-    constructor(public $http) {        
-        this.pokemons = [];      
-        
+    constructor(public $http: ng.IHttpService) {
+        this.pokemons = [];
+
     }
 
-    $onInit(){
-       this.$http.get('http://pokeapi.co/api/v1/pokemon/?limit=12').then(this.load);  
+    $onInit() {
+        this.$http.get('http://pokeapi.co/api/v1/pokemon/?limit=12').then(this.load);
     }
 
     loadMore() {
         this.$http.get(`http://pokeapi.co/${this.next}`).then(this.load);
     }
 
-    setPokemon(pokemon) {
+    setPokemon(pokemon: IPokemon) {
         this.pokemon = pokemon;
     }
 
