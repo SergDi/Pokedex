@@ -9,13 +9,13 @@ class PokemonListController {
 
     static $inject = ['$http'];
 
-    constructor(public $http) {
-        this.pokemons = [];
-        this.init();
+    constructor(public $http) {        
+        this.pokemons = [];      
+        
     }
 
-    init() {
-        this.$http.get('http://pokeapi.co/api/v1/pokemon/?limit=12').then(this.load);
+    $onInit(){
+       this.$http.get('http://pokeapi.co/api/v1/pokemon/?limit=12').then(this.load);  
     }
 
     loadMore() {
