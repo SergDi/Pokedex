@@ -1,6 +1,6 @@
 import pokemonDetail from '../pokemon-detail/pokemon-detail';
 
-export interface IPokemon {
+interface IPokemon {
     attack: number;
     defense: number;
     hp: number;
