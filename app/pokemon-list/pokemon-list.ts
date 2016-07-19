@@ -25,11 +25,11 @@ class PokemonListController {
     }
 
     $onInit() {
-        this.$http.get('http://pokeapi.co/api/v1/pokemon/?limit=12').then(this.load);
+        this.load('api/v1/pokemon/?limit=12');
     }
 
     loadMore() {
-        this.$http.get(`http://pokeapi.co/${this.next}`).then(this.load);
+        this.load(this.next);
     }
 
     setPokemon(pokemon: IPokemon) {
@@ -43,9 +43,11 @@ class PokemonListController {
             return true;
     }
 
-    private load = (response) => {
-        this.next = response.data.meta.next;
-        this.pokemons.push(...response.data.objects);
+    private load(param) {
+        this.$http.get<any>(`http://pokeapi.co/${param}`).then(response => {
+            this.next = response.data.meta.next;
+            this.pokemons.push(...response.data.objects);
+        });
     }
 
 }
