@@ -21,11 +21,8 @@ class PokemonListController {
 
     constructor(public $http: ng.IHttpService) {
         this.pokemons = [];
-        this.next = 'api/v1/pokemon/?limit=12'
-    }
-
-    $onInit() {
-        this.load(this.next);
+        this.next = 'api/v1/pokemon/?limit=12';
+        this.loadMore();
     }
 
     loadMore() {
