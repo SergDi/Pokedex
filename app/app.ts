@@ -4,25 +4,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 import pokemonList from './pokemon-list/pokemon-list';
 import spinner from './spinner/spinner'
 
-function App() {
-    return {
-        restrict: 'E',
-        template: `
+var AppComponent = {
+    template: `
         <spinner></spinner>        
         <pokemon-list></pokemon-list>          
         `,
-        controller: AppController,
-        controllerAs: 'App'
-    }
-}
+};
 
-class AppController {
-
-    constructor() {
-    }
-}
 angular.module('app',
     [pokemonList, spinner])
-    .directive('app', App);
+    .component('app', AppComponent)
 
 angular.bootstrap(document, ['app']);
