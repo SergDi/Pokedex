@@ -21,40 +21,42 @@ var SpinnerServiceComponent = {
     </div>`
 };
 
+class SpinnerService {
+
+    public state;
+
+    constructor() {
+        this.state = { visible: false };
+    }
+
+    getState() {
+        return this.state;
+    }
+    show() {
+        this.state.visible = true;
+    }
+    hide() {
+        this.state.visible = false;
+    }
+}
+
 export default angular.module('spinner', [])
     .component('spinner', SpinnerServiceComponent)
-    .service('spinnerService', function() {
-
-        var state = {
-            visible: false
-        };
+    .service('spinnerService', SpinnerService)
+    .factory('httpInterceptor', ['spinnerService', function (spinnerService) {
 
         return {
-            getState: function() {
-                return state;
-            },
-            show: function() {
-                state.visible = true;
-            },
-            hide: function() {
-                state.visible = false;
-            }
-        };
-    })
-    .factory('httpInterceptor', ['spinnerService', function(spinnerService) {
-
-        return {
-            request: function(request) {
+            request: function (request) {
                 spinnerService.show();
                 return request;
             },
-            response: function(response) {
+            response: function (response) {
                 spinnerService.hide();
                 return response;
             }
         }
     }])
-    .config(['$httpProvider', function($httpProvider) {
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('httpInterceptor');
     }])
     .name
