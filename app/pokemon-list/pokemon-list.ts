@@ -17,7 +17,7 @@ class PokemonListController {
     public next: string;
     public search: string;
 
-    static $inject = ['$http'];
+    /* @ngInject */
 
     constructor(public $http: ng.IHttpService) {
         this.pokemons = [];

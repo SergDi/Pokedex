@@ -2,7 +2,7 @@ import './spinner.css';
 
 class SpinnerServiceController {
 
-    static $inject = ['spinnerService'];
+    /* @ngInject */
 
     public state;
 
@@ -40,10 +40,11 @@ class SpinnerService {
     }
 }
 
-export default angular.module('spinner', [])
-    .component('spinner', SpinnerServiceComponent)
-    .service('spinnerService', SpinnerService)
-    .factory('httpInterceptor', ['spinnerService', function (spinnerService) {
+var Config = /* @ngInject */ function($httpProvider) {
+     $httpProvider.interceptors.push('httpInterceptor');
+};
+
+var Interceptor =/* @ngInject */ function (spinnerService) {
 
         return {
             request: function (request) {
@@ -55,8 +56,11 @@ export default angular.module('spinner', [])
                 return response;
             }
         }
-    }])
-    .config(['$httpProvider', function ($httpProvider) {
-        $httpProvider.interceptors.push('httpInterceptor');
-    }])
+    };
+
+export default angular.module('spinner', [])
+    .component('spinner', SpinnerServiceComponent)
+    .service('spinnerService', SpinnerService)
+    .factory('httpInterceptor', Interceptor)
+    .config(Config)
     .name

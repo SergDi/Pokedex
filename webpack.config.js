@@ -1,3 +1,5 @@
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+
 module.exports = {
 
     context: __dirname + '/app',
@@ -8,10 +10,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.ts$/, exclude: [/node_modules/], loader: 'ts-loader'},
-            {test: /\.html$/, loader: 'raw'},
-            {test: /\.css$/, loader: "style!css"},
-            {test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url'}
+            { test: /\.ts$/, exclude: [/node_modules/], loader: 'ts-loader' },
+            { test: /\.html$/, loader: 'raw' },
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.(woff|woff2|ttf|svg|eot)$/, loader: 'url' }
         ]
     },
 
@@ -29,5 +31,12 @@ module.exports = {
         }
     },
 
-    devtool: '#inline-source-map'
+    devtool: '#inline-source-map',
+
+    plugins: [
+        new ngAnnotatePlugin({
+            add: true
+        })
+    ]
+
 };
