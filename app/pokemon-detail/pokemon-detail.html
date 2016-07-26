@@ -1,45 +1,44 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="thumbnail">
-            <img ng-src="http://pokeapi.co/media/img/{{vm.pokemon.national_id}}.png" />
-        </div>
-        <div class="panel-info">
-            <div class="text-center" ng-bind="vm.pokemon.name"></div>
+<article class="pokemon">
 
-            <table class="table table-bordered">
+    <header>
+        <span ng-bind="vm.pokemon.name"></span>
+    </header>
 
-                <tbody>
-                    <tr>
-                        <td colspan="2">attack</td>
-                        <td ng-bind="vm.pokemon.attack"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">defense</td>
-                        <td ng-bind="vm.pokemon.defense"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">hp</td>
-                        <td ng-bind="vm.pokemon.hp"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">sp_atk</td>
-                        <td ng-bind="vm.pokemon.sp_atk"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">sp_def</td>
-                        <td ng-bind="vm.pokemon.sp_def"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">speed</td>
-                        <td ng-bind="vm.pokemon.speed"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">weight</td>
-                        <td ng-bind="vm.pokemon.weight"></td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>
+    <div class="pokemon-image">
+        <img ng-src="http://pokeapi.co/media/img/{{vm.pokemon.national_id}}.png" />
     </div>
-</div>
+    <footer>
+        <table >
+            <tbody>
+                <tr>
+                    <td colspan="2">attack</td>
+                    <td ng-bind="vm.pokemon.attack"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">defense</td>
+                    <td ng-bind="vm.pokemon.defense"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">hp</td>
+                    <td ng-bind="vm.pokemon.hp"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">sp_atk</td>
+                    <td ng-bind="vm.pokemon.sp_atk"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">sp_def</td>
+                    <td ng-bind="vm.pokemon.sp_def"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">speed</td>
+                    <td ng-bind="vm.pokemon.speed"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">weight</td>
+                    <td ng-bind="vm.pokemon.weight"></td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+</article>

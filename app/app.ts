@@ -1,5 +1,5 @@
 import 'angular';
-import 'bootstrap/dist/css/bootstrap.css'
+//import 'bootstrap/dist/css/bootstrap.css'
 
 import pokemonList from './pokemon-list/pokemon-list';
 import spinner from './spinner/spinner'
