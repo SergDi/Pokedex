@@ -1,3 +1,4 @@
+import './pokemon-list.css';
 import pokemonDetail from '../pokemon-detail/pokemon-detail';
 
 interface IPokemon {
